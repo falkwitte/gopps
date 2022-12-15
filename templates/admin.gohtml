@@ -1,0 +1,24 @@
+{{define "admin"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adminboard</title>
+    <script src="../static/wasm/wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("../static/wasm/main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+</head>
+<body>
+    <label for="adminname">Username</label>
+    <input type="text" name="adminname" id="adminname">
+    <br>
+    <label for="adminpass">Password</label>
+    <input type="password" name="adminpass" id="adminpass">
+    <button id="submit">Submit</button>
+</body>
+</html>
+{{end}}
