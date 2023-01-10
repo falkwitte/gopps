@@ -18,11 +18,7 @@ func index(c echo.Context) error {
 	return c.Render(200, "index", data)
 }
 
-func admin(c echo.Context) error {
-	return c.Render(200, "admin", utils.IPaddress())
-}
-
-// always render admin, until the password and the username are correct
+// always render adminlogin, until the password and the username are correct
 func adminboard(c echo.Context) error {
 
 	adminname := c.FormValue("adminname")
@@ -33,7 +29,7 @@ func adminboard(c echo.Context) error {
 	password := "admin"
 
 	if !modules.Authvalidator(adminname, adminpass, username, password) {
-		return c.Render(401, "admin", nil)
+		return c.Render(401, "adminlogin", nil)
 	}
 	return c.Render(200, "adminboard", nil)
 }
@@ -42,10 +38,8 @@ func Routing(e *echo.Echo) {
 	// Routes
 	e.GET("/", index)
 
-	e.GET("/admin", admin)
-
-	e.GET("/adminboard", adminboard)
-	e.POST("/adminboard", adminboard)
+	e.GET("/admin", adminboard)
+	e.POST("/admin", adminboard)
 
 	e.Static("/static/", "static")
 }
