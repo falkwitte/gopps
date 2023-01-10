@@ -16,7 +16,7 @@ This Server is written in Golang with the echo framework.
 Contribute if you want
 
 ## TODO
-[ ] Add database support
-[ ] write documentation 
-[x] clean code
-[ ] write my own loadbalancer/reverse-proxy
+- [ ] Add database support
+- [ ] write documentation 
+- [x] clean code
+- [ ] write my own loadbalancer/reverse-proxy
